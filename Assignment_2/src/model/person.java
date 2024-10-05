@@ -9,59 +9,70 @@ package model;
  * @author sanskruti
  */
 public class person {
-    private String firstName;
-    private String lastName;
-    private long ssn;  // Social Security Number
-    private int age;
-    private String homeAddress;
-    private String workAddress;
+    private String FirstName;
+    private String LastName;
+    private long SSN;
+    private int Age;
+    private Address HomeAddress;
+    private Address WorkAddress;
+    
 
-    public String getFirstName() {
-        return firstName;
+     public person() {
+        this.HomeAddress = new Address();
+        this.WorkAddress = new Address();
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getFirstName() {
+        return FirstName;
+    }
+
+    public void setFirstName(String FirstName) {
+        this.FirstName = FirstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return LastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastName(String LastName) {
+        this.LastName = LastName;
     }
 
-    public long getSsn() {
-        return ssn;
+    public long getSSN() {
+        return SSN;
     }
 
-    public void setSsn(long ssn) {
-        this.ssn = ssn;
+    public void setSSN(long SSN) {
+        this.SSN = SSN;
     }
 
     public int getAge() {
-        return age;
+        return Age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setAge(int Age) {
+        this.Age = Age;
     }
 
-    public String getHomeAddress() {
-        return homeAddress;
+    public Address getHomeAddress() {
+        return HomeAddress;
     }
 
-    public void setHomeAddress(String homeAddress) {
-        this.homeAddress = homeAddress;
+    public void setHomeAddress(Address HomeAddress) {
+        this.HomeAddress = HomeAddress;
     }
 
-    public String getWorkAddress() {
-        return workAddress;
+    public Address getWorkAddress() {
+        return WorkAddress;
     }
 
-    public void setWorkAddress(String workAddress) {
-        this.workAddress = workAddress;
+    public void setWorkAddress(Address WorkAddress) {
+        this.WorkAddress = WorkAddress;
+    }
+    
+       @Override
+    public String toString(){
+        return FirstName;
     }
   
 }

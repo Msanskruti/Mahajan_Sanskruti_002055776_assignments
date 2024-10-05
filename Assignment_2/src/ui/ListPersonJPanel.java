@@ -4,18 +4,27 @@
  */
 package ui;
 
+import javax.swing.table.DefaultTableModel;
+import model.person;
+import model.personDirectory;
+
 /**
  *
  * @author sanskruti
  */
 public class ListPersonJPanel extends javax.swing.JPanel {
-
+    personDirectory ListPerson;
     /**
      * Creates new form ListPersonJPanel
      */
-    public ListPersonJPanel() {
+    public ListPersonJPanel(personDirectory PersonList) {
         initComponents();
+        this.ListPerson = PersonList;
+        
+         populateTable();
     }
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,9 +40,11 @@ public class ListPersonJPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         lblSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
+        btnViewDetails = new javax.swing.JButton();
+        btnDeleteProfile = new javax.swing.JButton();
 
         lblPersonList.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        lblPersonList.setText("Person List");
+        lblPersonList.setText("List of Person");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -43,12 +54,16 @@ public class ListPersonJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "First Name", "Last Name", "SSN", "Age", "Home Add", "Work Add"
+                "First Name", "Last Name", "City of HomeAdd", "ZC HomeAdd", "City of WorkAdd", "ZC WorkAdd"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         lblSearch.setText("Search:");
+
+        btnViewDetails.setText("View Details");
+
+        btnDeleteProfile.setText("Delete Profile");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -66,7 +81,12 @@ public class ListPersonJPanel extends javax.swing.JPanel {
                         .addGap(58, 58, 58)
                         .addComponent(lblSearch)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnDeleteProfile)
+                            .addComponent(btnViewDetails))))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -80,16 +100,46 @@ public class ListPersonJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSearch)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnViewDetails)
+                .addGap(18, 18, 18)
+                .addComponent(btnDeleteProfile)
+                .addContainerGap(106, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDeleteProfile;
+    private javax.swing.JButton btnViewDetails;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblPersonList;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
-}
+
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) Person_Table.getModel();
+            
+        model.setRowCount(0);
+        
+        for(person p : ListPerson.getListPerson())
+        {
+            
+            
+            Object[] row = new Object[6];
+            row[0] = p;
+            row[1] = p.getLastName();
+            row[2] = p.getHomeAddress().getCity();
+            row[3] = p.getHomeAddress().getZIP();
+            row[4] = p.getWorkAddress().getCity();
+            row[5] = p.getWorkAddress().getZIP();
+            
+            model.addRow(row);
+            
+        }
+     
+    }
+
+
