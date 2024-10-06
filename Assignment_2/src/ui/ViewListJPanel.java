@@ -4,7 +4,11 @@
  */
 package ui;
 
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import model.person;
 import model.personDirectory;
 
@@ -22,10 +26,10 @@ public class ViewListJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewListJPanel
      * @param person
-     */
-    public ViewListJPanel(Jpanel UserProcessContainer, personDirectory ListPerson, person person) {
+     */    
+     public ViewListJPanel(JPanel UserProcessContainer, personDirectory ListPerson, person person) {
         initComponents();
-        this.personDirectory = UserProcessContainer;
+        this.UserProcessContainer = UserProcessContainer;
         this.person = person;
         
         refreshTextFields();
@@ -147,8 +151,18 @@ public class ViewListJPanel extends javax.swing.JPanel {
         });
 
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         btnUpdateDetails.setText("Update Details");
+        btnUpdateDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateDetailsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -326,9 +340,66 @@ public class ViewListJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtFirstNameActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+     UserProcessContainer.remove(this);
+        Component[] panelStack=UserProcessContainer.getComponents();
+        JPanel lastPanel=(JPanel) panelStack[panelStack.length - 1];
+        ListPersonJPanel listpersonJPanel=(ListPersonJPanel) lastPanel;
+        listpersonJPanel.populateTable();
+        
+        CardLayout layout=(CardLayout) UserProcessContainer.getLayout();
+        layout.previous(UserProcessContainer);
+            
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        String FirstName = txtFirstName.getText();
+        String LastName = txtLastName.getText();
+        String SSN = txtSsn.getText();
+        String Age = txtAge.getText();
+        String WorkStreet = txtWorkStreetAddress.getText();
+        String WorkCity = txtWorkCity.getText();
+        String WorkState = txtWorkState.getText();
+        String WorkUnitNumber = txtWorkUnitNumber.getText();
+        String WorkZIP = txtWorkZipCode.getText();
+        String HomeStreet = txtHomeStreetAddress.getText();
+        String HomeCity = txtHomeCity.getText();
+        String HomeState = txtHomeState.getText();
+        String HomeUnitNumber = txtHomeUnitNumber.getText();
+        String HomeZIP = txtHomeZipCode.getText();
+        String HomePhoneNumber = txtHomePhoneNumber.getText();
+        String WorkPhoneNumber = txtWorkPhoneNumber.getText();
+        
+        if (FirstName.isBlank() || LastName.isBlank() || SSN.isBlank() || Age.isBlank() || WorkStreet.isBlank() || WorkCity.isBlank() || WorkState.isBlank() || WorkUnitNumber.isBlank()||WorkPhoneNumber.isBlank()||WorkZIP.isBlank() || HomeStreet.isBlank() || HomeCity.isBlank() || HomeState.isBlank() || HomeUnitNumber.isBlank()||HomePhoneNumber.isBlank()||HomeZIP.isBlank()){
+            JOptionPane.showMessageDialog(null,"All fields are mandatory");
+            return;
+        }
+        person.setFirstName(FirstName);
+        person.setLastName(LastName);
+        person.setSSN(Long.valueOf(SSN));
+        person.setAge(Integer.valueOf(Age));
+        person.getHomeAddress().setStreet(HomeStreet);
+        person.getHomeAddress().setCity(HomeCity);
+        person.getHomeAddress().setState(HomeState);
+        person.getHomeAddress().setZIP(HomeZIP);
+        person.getHomeAddress().setUnitNumber(HomeUnitNumber);
+        person.getWorkAddress().setCity(WorkCity);
+        person.getWorkAddress().setState(WorkState);
+        person.getWorkAddress().setStreet(WorkStreet);
+        person.getWorkAddress().setUnitNumber(WorkUnitNumber);
+        person.getWorkAddress().setZIP(WorkZIP);
+        person.getWorkAddress().setPhoneNumber(WorkPhoneNumber);
+        person.getHomeAddress().setPhoneNumber(HomePhoneNumber);
+        
+        JOptionPane.showMessageDialog(null,"Profile successfully updated","Warning",JOptionPane.WARNING_MESSAGE);
+        setViewMode();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnUpdateDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDetailsActionPerformed
+       setEditMode();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateDetailsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -374,8 +445,8 @@ public class ViewListJPanel extends javax.swing.JPanel {
     private void refreshTextFields() {
        txtFirstName.setText(person.getFirstName());
         txtLastName.setText(person.getLastName());
-        txtSsn.setText(person.getSSN());
-        txtAge.setText(person.getAge());
+        txtSsn.setText(String.valueOf(person.getSSN()));
+        txtAge.setText(String.valueOf(person.getAge()));
         txtHomeStreetAddress.setText(person.getHomeAddress().getStreet());
         txtHomeUnitNumber.setText(person.getHomeAddress().getUnitNumber());
         txtHomeCity.setText(person.getHomeAddress().getCity());
@@ -415,7 +486,8 @@ public class ViewListJPanel extends javax.swing.JPanel {
         btnSave.setEnabled(false);
         btnUpdateDetails.setEnabled(true);
     }
-       private void setEditMode() {
+       
+    private void setEditMode() {
         txtFirstName.setEnabled(true);
         txtLastName.setEnabled(true);
         txtSsn.setEnabled(true);
@@ -435,5 +507,5 @@ public class ViewListJPanel extends javax.swing.JPanel {
         
         btnSave.setEnabled(true);
         btnUpdateDetails.setEnabled(false);
-        
+       }  
 }

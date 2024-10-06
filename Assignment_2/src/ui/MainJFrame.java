@@ -4,6 +4,7 @@
  */
 package ui;
 
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import model.person;
 import model.personDirectory;
@@ -14,6 +15,7 @@ import model.personDirectory;
  */
 public class MainJFrame extends javax.swing.JFrame {
     personDirectory ListPerson;
+    
     /**
      * Creates new form MainJFrame
      */
@@ -21,7 +23,7 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         ListPerson = new personDirectory();
         
-        populatedata();
+        populateData();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,40 +37,38 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        btnAddPerson = new javax.swing.JButton();
-        btnListPerson = new javax.swing.JButton();
+        AddPerson_Button = new javax.swing.JButton();
+        ListPerson_Button = new javax.swing.JButton();
         lblPersonProfile = new javax.swing.JLabel();
         txtsearchforperson = new javax.swing.JTextField();
-        btnSearchForPerson = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        SearchPerson_Button = new javax.swing.JButton();
         UserProcessContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnAddPerson.setText("Add Person");
-        btnAddPerson.addActionListener(new java.awt.event.ActionListener() {
+        AddPerson_Button.setText("Add Person");
+        AddPerson_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddPersonActionPerformed(evt);
+                AddPerson_ButtonActionPerformed(evt);
             }
         });
 
-        btnListPerson.setText("List Person");
+        ListPerson_Button.setText("List Person");
+        ListPerson_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListPerson_ButtonActionPerformed(evt);
+            }
+        });
 
         lblPersonProfile.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         lblPersonProfile.setText("Person Profile");
 
-        btnSearchForPerson.setText("search for person");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 549, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 512, Short.MAX_VALUE)
-        );
+        SearchPerson_Button.setText("search for person");
+        SearchPerson_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchPerson_ButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,21 +79,16 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSearchForPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPersonProfile))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(SearchPerson_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPersonProfile)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnListPerson)
-                                    .addComponent(btnAddPerson))
-                                .addGap(39, 39, 39))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtsearchforperson, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))))
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(ListPerson_Button)
+                                .addComponent(AddPerson_Button))
+                            .addComponent(txtsearchforperson, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -102,17 +97,14 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(lblPersonProfile)
                 .addGap(46, 46, 46)
-                .addComponent(btnAddPerson)
+                .addComponent(AddPerson_Button)
                 .addGap(43, 43, 43)
-                .addComponent(btnListPerson)
+                .addComponent(ListPerson_Button)
                 .addGap(96, 96, 96)
                 .addComponent(txtsearchforperson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnSearchForPerson)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(SearchPerson_Button)
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -124,7 +116,7 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 958, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,29 +126,36 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   private void AddPerson_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPerson_ButtonActionPerformed
-        AddPersonJPanel panel = new AddPersonJPanel(ListPerson);
-        SplitPane.setRightComponent(panel);  
-    }//GEN-LAST:event_AddPerson_ButtonActionPerformed
-
     private void ListPerson_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListPerson_ButtonActionPerformed
-        ListPersonJPanel panel = new ListPersonJPanel(ListPerson);
-        SplitPane.setRightComponent(panel);        
+       ListPersonJPanel listperson_panel = new ListPersonJPanel(UserProcessContainer,ListPerson);
+       UserProcessContainer.add("ListPerson_JPanel", listperson_panel); 
+        CardLayout layout=(CardLayout) UserProcessContainer.getLayout();
+        layout.next(UserProcessContainer);      
     }//GEN-LAST:event_ListPerson_ButtonActionPerformed
 
+    private void AddPerson_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPerson_ButtonActionPerformed
+        AddPersonJPanel addperson_panel = new AddPersonJPanel(UserProcessContainer, ListPerson);
+        UserProcessContainer.add("AddPerson_JPanel", addperson_panel);
+        
+        CardLayout layout=(CardLayout) UserProcessContainer.getLayout();
+        layout.next(UserProcessContainer);   // TODO add your handling code here:
+    }//GEN-LAST:event_AddPerson_ButtonActionPerformed
+
     private void SearchPerson_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchPerson_ButtonActionPerformed
-        String search = Search_Text.getText();
-        person result = ListPerson.searchPerson(Search_Text.getText());
+        String search = txtsearchforperson.getText();
+        person result = ListPerson.searchPerson(txtsearchforperson.getText());
         if (result == null){
             JOptionPane.showMessageDialog(null, "Does not exist", "Information", JOptionPane.INFORMATION_MESSAGE);
             
         }
         else {
-            ViewListJPanel panel = new ViewListJPanel(ListPerson,search);
-            SplitPane.setRightComponent(panel);
+            ViewListJPanel viewperson_panel = new ViewListJPanel(UserProcessContainer,ListPerson, result);
+            UserProcessContainer.add("ViewPerson_JPanel", viewperson_panel);
+            CardLayout layout=(CardLayout) UserProcessContainer.getLayout();
+            layout.next(UserProcessContainer);
            
         }
-         Search_Text.setText("");   
+         txtsearchforperson.setText("");    // TODO add your handling code here:
     }//GEN-LAST:event_SearchPerson_ButtonActionPerformed
 
   
@@ -193,13 +192,13 @@ public class MainJFrame extends javax.swing.JFrame {
     private void populateData() {
         
    
-        person p1 = new person();
+        person p1 = ListPerson.addPerson();
 
 // Set personal details
         p1.setFirstName("Sanskruti");
         p1.setLastName("Mahajan");
-        p1.setSSN("123-654-187");
-        p1.setAge("22");
+        p1.setSSN(12365487);
+        p1.setAge(22);
         p1.getHomeAddress().setStreet("Boylston St");
         p1.getHomeAddress().setCity("San Francisco"); 
         p1.getHomeAddress().setState("California");
@@ -220,8 +219,8 @@ public class MainJFrame extends javax.swing.JFrame {
  
         p2.setFirstName("Alia");
         p2.setLastName("Bhatt");
-        p2.setSSN("645-123-653");
-        p2.setAge("30");
+        p2.setSSN(645123653);
+        p2.setAge(30);
         p2.getHomeAddress().setStreet("Boylston St");
         p2.getHomeAddress().setCity("Los Angeles"); 
         p2.getHomeAddress().setState("California");
@@ -239,8 +238,8 @@ public class MainJFrame extends javax.swing.JFrame {
  
         p3.setFirstName("Kendal");
         p3.setLastName("Jenner");
-        p3.setSSN("543-671-635");
-        p3.setAge("40");
+        p3.setSSN(543671635);
+        p3.setAge(40);
         p3.getHomeAddress().setStreet("Kendall St");
         p3.getHomeAddress().setCity("Miami"); 
         p3.getHomeAddress().setState("Florida");
@@ -258,8 +257,8 @@ public class MainJFrame extends javax.swing.JFrame {
  
         p4.setFirstName("Kim");
         p4.setLastName("Gen");
-        p4.setSSN("876-765-423");
-        p4.setAge("39");
+        p4.setSSN(876765423);
+        p4.setAge(39);
         p4.getHomeAddress().setStreet("Lowell St");
         p4.getHomeAddress().setCity("Eugen"); 
         p4.getHomeAddress().setState("Oregon");
@@ -278,8 +277,8 @@ public class MainJFrame extends javax.swing.JFrame {
  
         p5.setFirstName("Khloe");
         p5.setLastName("ken");
-        p5.setSSN("342-876-536");
-        p5.setAge("45");
+        p5.setSSN(342876536);
+        p5.setAge(45);
         p5.getHomeAddress().setStreet("Beacon St");
         p5.getHomeAddress().setCity("New York"); 
         p5.getHomeAddress().setState("Mass");
@@ -295,63 +294,24 @@ public class MainJFrame extends javax.swing.JFrame {
         
     }
 
-    private void populatedata() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
-}
-
-    private void btnAddPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddPersonActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainJFrame().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddPerson_Button;
+    private javax.swing.JButton ListPerson_Button;
+    private javax.swing.JButton SearchPerson_Button;
     private javax.swing.JPanel UserProcessContainer;
-    private javax.swing.JButton btnAddPerson;
-    private javax.swing.JButton btnListPerson;
-    private javax.swing.JButton btnSearchForPerson;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblPersonProfile;
     private javax.swing.JTextField txtsearchforperson;
     // End of variables declaration//GEN-END:variables
-
+}
 
 
 

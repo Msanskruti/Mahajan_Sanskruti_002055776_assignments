@@ -4,8 +4,10 @@
  */
 package ui;
 
+import java.awt.CardLayout;
 import model.personDirectory;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import model.person;
 
 /**
@@ -13,7 +15,8 @@ import model.person;
  * @author sanskruti
  */
 public class AddPersonJPanel extends javax.swing.JPanel {
-     personDirectory ListPerson;
+    JPanel UserProcessContainer;
+    personDirectory ListPerson;
     
     
 
@@ -21,9 +24,10 @@ public class AddPersonJPanel extends javax.swing.JPanel {
      * Creates new form AddPersonJPanel
      */
 
-    public AddPersonJPanel(personDirectory ListPerson) {
+    public AddPersonJPanel(JPanel container, personDirectory ListPerson) {
         initComponents();
         this.ListPerson = ListPerson;
+        UserProcessContainer=container;
     }
 
     /**
@@ -142,6 +146,11 @@ public class AddPersonJPanel extends javax.swing.JPanel {
         lblWorkPhoneNumber.setText("Phone Number:");
 
         btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -306,12 +315,12 @@ public class AddPersonJPanel extends javax.swing.JPanel {
         String LastName = txtLastName.getText();
         String SSN = txtSsn.getText();
         String Age = txtAge.getText();
-        String WorkStreet = txtWorkStreetName.getText();
+        String WorkStreet = txtWorkStreetAddress.getText();
         String WorkCity = txtWorkCity.getText();
         String WorkState = txtWorkState.getText();
         String WorkUnitNumber = txtWorkUnitNumber.getText();
         String WorkZipCode = txtWorkZipCode.getText();
-        String HomeStreet = txtHomeStreetName.getText();
+        String HomeStreet = txtStreetAddress.getText();
         String HomeCity = txtHomeCity.getText();
         String HomeState = txtHomeState.getText();
         String HomeUnitNumber = txtHomeUnitNumber.getText();
@@ -323,8 +332,8 @@ public class AddPersonJPanel extends javax.swing.JPanel {
       
         p.setFirstName(FirstName);
         p.setLastName(LastName);
-        p.setSSN (Ssn);
-        p.setAge(Age);
+        p.setSSN (Long.valueOf(SSN));
+        p.setAge(Integer.valueOf(Age));
         p.getHomeAddress().setStreet(HomeStreet);
         p.getHomeAddress().setCity(HomeCity);
         p.getHomeAddress().setState(HomeState);
@@ -344,12 +353,12 @@ public class AddPersonJPanel extends javax.swing.JPanel {
         txtLastName.setText("");
         txtSsn.setText("");
         txtAge.setText("");
-        txtWorkStreetName.setText("");
+        txtWorkStreetAddress.setText("");
         txtWorkCity.setText("");
         txtWorkState.setText("");
         txtWorkUnitNumber.setText("");
         txtWorkZipCode.setText("");
-        txtHomeStreetName.setText("");
+        txtStreetAddress.setText("");
         txtHomeCity.setText("");
         txtHomeState.setText("");
         txtHomeUnitNumber.setText("");
@@ -357,7 +366,7 @@ public class AddPersonJPanel extends javax.swing.JPanel {
         txtHomePhoneNumber.setText("");
         txtWorkPhoneNumber.setText("");
     }                                             
-    }                                         
+                                          
 
     private void txtHomeCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHomeCityActionPerformed
         // TODO add your handling code here:
@@ -366,6 +375,12 @@ public class AddPersonJPanel extends javax.swing.JPanel {
     private void txtHomeZipCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHomeZipCodeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHomeZipCodeActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        UserProcessContainer.remove(this);
+        CardLayout layout=(CardLayout) UserProcessContainer.getLayout();
+        layout.previous(UserProcessContainer);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

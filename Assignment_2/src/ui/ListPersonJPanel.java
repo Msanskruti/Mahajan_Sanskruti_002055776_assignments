@@ -135,10 +135,11 @@ public class ListPersonJPanel extends javax.swing.JPanel {
                 ListPerson.deletePerson(person);
                 populateTable();
             
-        }
+            }
         }
          else{
            JOptionPane.showMessageDialog(null, "No Profile Selected", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeleteProfileActionPerformed
 
     private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
@@ -163,10 +164,10 @@ public class ListPersonJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnViewDetailsActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-    UserProcessContainer.remove(this);
-    CardLayout layout=(CardLayout) UserProcessContainer.getLayout();
-    layout.previous(UserProcessContainer);
-        // TODO add your handling code here:
+        UserProcessContainer.remove(this);
+        CardLayout layout=(CardLayout) UserProcessContainer.getLayout();
+        layout.previous(UserProcessContainer);
+            // TODO add your handling code here:
     }//GEN-LAST:event_btnBackActionPerformed
 
 
@@ -179,14 +180,13 @@ public class ListPersonJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblPersonList;
     // End of variables declaration//GEN-END:variables
 
-    private void populateTable() {
+    public void populateTable() {
         DefaultTableModel model = (DefaultTableModel) PersonTable.getModel();
             
         model.setRowCount(0);
         
         for(person p : ListPerson.getListPerson())
         {
-            
             
             Object[] row = new Object[6];
             row[0] = p;
