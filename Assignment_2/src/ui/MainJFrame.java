@@ -36,17 +36,20 @@ public class MainJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jSplitPane1 = new javax.swing.JSplitPane();
+        UserProcessContainer = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         AddPerson_Button = new javax.swing.JButton();
         ListPerson_Button = new javax.swing.JButton();
         lblPersonProfile = new javax.swing.JLabel();
         txtsearchforperson = new javax.swing.JTextField();
         SearchPerson_Button = new javax.swing.JButton();
-        UserProcessContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        UserProcessContainer.setLayout(new java.awt.CardLayout());
+        jSplitPane1.setRightComponent(UserProcessContainer);
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
         AddPerson_Button.setText("Add Person");
         AddPerson_Button.addActionListener(new java.awt.event.ActionListener() {
@@ -66,12 +69,6 @@ public class MainJFrame extends javax.swing.JFrame {
         lblPersonProfile.setForeground(new java.awt.Color(255, 255, 255));
         lblPersonProfile.setText("Person Profile");
 
-        txtsearchforperson.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtsearchforpersonActionPerformed(evt);
-            }
-        });
-
         SearchPerson_Button.setText("search for person");
         SearchPerson_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,52 +81,54 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(AddPerson_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ListPerson_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblPersonProfile)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtsearchforperson, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(SearchPerson_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ListPerson_Button)
+                            .addComponent(AddPerson_Button))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(SearchPerson_Button)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblPersonProfile)
-                    .addComponent(txtsearchforperson, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(28, 28, 28)
                 .addComponent(lblPersonProfile)
-                .addGap(43, 43, 43)
+                .addGap(45, 45, 45)
                 .addComponent(AddPerson_Button)
-                .addGap(38, 38, 38)
+                .addGap(36, 36, 36)
                 .addComponent(ListPerson_Button)
-                .addGap(101, 101, 101)
+                .addGap(85, 85, 85)
                 .addComponent(txtsearchforperson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(37, 37, 37)
                 .addComponent(SearchPerson_Button)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
-
-        UserProcessContainer.setLayout(new java.awt.CardLayout());
-        jSplitPane1.setRightComponent(UserProcessContainer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 958, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSplitPane1)
+                .addGap(32, 32, 32))
         );
 
         pack();
@@ -166,10 +165,6 @@ public class MainJFrame extends javax.swing.JFrame {
         }
          txtsearchforperson.setText("");    // TODO add your handling code here:
     }//GEN-LAST:event_SearchPerson_ButtonActionPerformed
-
-    private void txtsearchforpersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsearchforpersonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtsearchforpersonActionPerformed
 
   
     public static void main(String args[]) {

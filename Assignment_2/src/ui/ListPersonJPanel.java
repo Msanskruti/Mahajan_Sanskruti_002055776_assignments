@@ -47,6 +47,8 @@ public class ListPersonJPanel extends javax.swing.JPanel {
         btnDeleteProfile = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 204));
+
         lblPersonList.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblPersonList.setText("List of Persons");
 
@@ -71,6 +73,7 @@ public class ListPersonJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(PersonTable);
 
+        btnViewDetails.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnViewDetails.setText("View Details");
         btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +81,7 @@ public class ListPersonJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDeleteProfile.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnDeleteProfile.setText("Delete Profile");
         btnDeleteProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +89,7 @@ public class ListPersonJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnBack.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnBack.setText(">>>Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +132,7 @@ public class ListPersonJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeleteProfile)
                     .addComponent(btnViewDetails))
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
