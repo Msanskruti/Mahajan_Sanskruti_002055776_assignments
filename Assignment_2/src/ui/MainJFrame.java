@@ -62,7 +62,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        lblPersonProfile.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        lblPersonProfile.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        lblPersonProfile.setForeground(new java.awt.Color(255, 255, 255));
         lblPersonProfile.setText("Person Profile");
 
         txtsearchforperson.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +113,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(txtsearchforperson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SearchPerson_Button)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);

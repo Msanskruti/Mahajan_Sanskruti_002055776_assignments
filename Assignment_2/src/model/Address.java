@@ -15,16 +15,16 @@ public class Address {
     private String Street;
     private String City;
     private String State;
-    private String ZIP;
-    private String UnitNumber;
-    private String PhoneNumber;
+    private int ZIP;
+    private short UnitNumber;
+    private long PhoneNumber;
 
-    public String getPhoneNumber() {
+    public long getPhoneNumber() {
         return PhoneNumber;
     }
 
     public void setPhoneNumber(String PhoneNumber) {
-        this.PhoneNumber = PhoneNumber;
+       this.PhoneNumber = Long.parseLong(PhoneNumber);
     }
 
     public String getStreet() {
@@ -51,19 +51,19 @@ public class Address {
         this.State = State;
     }
 
-    public String getZIP() {
+    public int getZIP() {
         return ZIP;
     }
 
     public void setZIP(String ZIP) {
-        this.ZIP = ZIP;
+        this.ZIP = Integer.parseInt(ZIP);
     }
 
-    public String getUnitNumber() {
+    public short getUnitNumber() {
         return UnitNumber;
     }
 
     public void setUnitNumber(String UnitNumber) {
-        this.UnitNumber = UnitNumber;
+       this.UnitNumber = Short.parseShort(UnitNumber);
     }
 }

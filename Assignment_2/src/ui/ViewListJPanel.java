@@ -376,8 +376,8 @@ public class ViewListJPanel extends javax.swing.JPanel {
         }
         person.setFirstName(FirstName);
         person.setLastName(LastName);
-        person.setSSN(Long.valueOf(SSN));
-        person.setAge(Integer.valueOf(Age));
+        person.setSSN(Long.parseLong(SSN));
+        person.setAge(Integer.parseInt(Age));
         person.getHomeAddress().setStreet(HomeStreet);
         person.getHomeAddress().setCity(HomeCity);
         person.getHomeAddress().setState(HomeState);
@@ -448,17 +448,18 @@ public class ViewListJPanel extends javax.swing.JPanel {
         txtSsn.setText(String.valueOf(person.getSSN()));
         txtAge.setText(String.valueOf(person.getAge()));
         txtHomeStreetAddress.setText(person.getHomeAddress().getStreet());
-        txtHomeUnitNumber.setText(person.getHomeAddress().getUnitNumber());
+        txtHomeUnitNumber.setText(String.valueOf(person.getHomeAddress().getUnitNumber()));
         txtHomeCity.setText(person.getHomeAddress().getCity());
         txtHomeState.setText(person.getHomeAddress().getState());
-        txtHomeZipCode.setText(person.getHomeAddress().getZIP());
-        txtHomePhoneNumber.setText(person.getHomeAddress().getPhoneNumber());
+        txtHomeZipCode.setText(String.valueOf(person.getHomeAddress().getZIP()));
+        txtHomePhoneNumber.setText(String.valueOf(person.getHomeAddress().getPhoneNumber()));
         txtWorkStreetAddress.setText(person.getWorkAddress().getStreet());
-        txtWorkUnitNumber.setText(person.getWorkAddress().getUnitNumber());
+        txtWorkUnitNumber.setText(String.valueOf(person.getWorkAddress().getUnitNumber()));
         txtWorkCity.setText(person.getWorkAddress().getCity());
         txtWorkState.setText(person.getWorkAddress().getState());
-        txtWorkZipCode.setText(person.getWorkAddress().getZIP());
-        txtWorkPhoneNumber.setText(person.getWorkAddress().getPhoneNumber());
+        txtWorkZipCode.setText(String.valueOf(person.getWorkAddress().getZIP()));
+        txtWorkPhoneNumber.setText(String.valueOf(person.getWorkAddress().getPhoneNumber()));
+
 
         btnSave.setEnabled(false);
         btnUpdateDetails.setEnabled(true);

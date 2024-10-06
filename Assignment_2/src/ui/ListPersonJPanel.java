@@ -60,7 +60,15 @@ public class ListPersonJPanel extends javax.swing.JPanel {
             new String [] {
                 "First Name", "Last Name", "City of HomeAdd", "ZC HomeAdd", "City of WorkAdd", "ZC WorkAdd"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(PersonTable);
 
         btnViewDetails.setText("View Details");
