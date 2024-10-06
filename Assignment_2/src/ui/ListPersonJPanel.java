@@ -4,6 +4,9 @@
  */
 package ui;
 
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.person;
 import model.personDirectory;
@@ -14,12 +17,14 @@ import model.personDirectory;
  */
 public class ListPersonJPanel extends javax.swing.JPanel {
     personDirectory ListPerson;
+    JPanel UserProcessContainer;
     /**
      * Creates new form ListPersonJPanel
      */
-    public ListPersonJPanel(personDirectory PersonList) {
+    public ListPersonJPanel(JPanel container, personDirectory ListPerson) {
         initComponents();
-        this.ListPerson = PersonList;
+        this.ListPerson = ListPerson;
+        UserProcessContainer = container;
         
          populateTable();
     }
@@ -37,16 +42,15 @@ public class ListPersonJPanel extends javax.swing.JPanel {
 
         lblPersonList = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        lblSearch = new javax.swing.JLabel();
-        txtSearch = new javax.swing.JTextField();
+        PersonTable = new javax.swing.JTable();
         btnViewDetails = new javax.swing.JButton();
         btnDeleteProfile = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         lblPersonList.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        lblPersonList.setText("List of Person");
+        lblPersonList.setText("List of Persons");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PersonTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -57,13 +61,28 @@ public class ListPersonJPanel extends javax.swing.JPanel {
                 "First Name", "Last Name", "City of HomeAdd", "ZC HomeAdd", "City of WorkAdd", "ZC WorkAdd"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-
-        lblSearch.setText("Search:");
+        jScrollPane1.setViewportView(PersonTable);
 
         btnViewDetails.setText("View Details");
+        btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDetailsActionPerformed(evt);
+            }
+        });
 
         btnDeleteProfile.setText("Delete Profile");
+        btnDeleteProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteProfileActionPerformed(evt);
+            }
+        });
+
+        btnBack.setText(">>>Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -76,51 +95,92 @@ public class ListPersonJPanel extends javax.swing.JPanel {
                         .addComponent(lblPersonList))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnViewDetails)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDeleteProfile))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(lblSearch)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDeleteProfile)
-                            .addComponent(btnViewDetails))))
+                        .addContainerGap()
+                        .addComponent(btnBack)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(16, 16, 16)
+                .addComponent(btnBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPersonList)
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSearch)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnViewDetails)
-                .addGap(18, 18, 18)
-                .addComponent(btnDeleteProfile)
-                .addContainerGap(106, Short.MAX_VALUE))
+                    .addComponent(btnDeleteProfile)
+                    .addComponent(btnViewDetails))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnDeleteProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteProfileActionPerformed
+
+        // TODO add your handling code here:
+        int selectedRow = PersonTable.getSelectedRow();
+        if (selectedRow>=0) {
+            int DialogButton = JOptionPane.YES_NO_OPTION;
+             int DialogResult = JOptionPane.showConfirmDialog(null, "Do you want to delete?", "Warning", DialogButton);
+            if(DialogResult == JOptionPane.YES_OPTION){
+                person person = (person) PersonTable.getValueAt(selectedRow, 0);
+                ListPerson.deletePerson(person);
+                populateTable();
+            
+        }
+        }
+         else{
+           JOptionPane.showMessageDialog(null, "No Profile Selected", "Warning", JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_btnDeleteProfileActionPerformed
+
+    private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
+        int selectedRow=PersonTable.getSelectedRow();
+        if(selectedRow>=0){
+            person person=(person)PersonTable.getValueAt(selectedRow,0);
+            ViewListJPanel viewListpanel = new ViewListJPanel(UserProcessContainer,ListPerson, person);
+            UserProcessContainer.add("ViewListJPanel",viewListpanel);
+            CardLayout layout=(CardLayout) UserProcessContainer.getLayout();
+            layout.next(UserProcessContainer);
+            
+        
+        
+        
+        }else {
+            JOptionPane.showMessageDialog(null,"Please select a profile to view","Warning",JOptionPane.WARNING_MESSAGE);
+
+            
+        }
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnViewDetailsActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+    UserProcessContainer.remove(this);
+    CardLayout layout=(CardLayout) UserProcessContainer.getLayout();
+    layout.previous(UserProcessContainer);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable PersonTable;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDeleteProfile;
     private javax.swing.JButton btnViewDetails;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblPersonList;
-    private javax.swing.JLabel lblSearch;
-    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) Person_Table.getModel();
+        DefaultTableModel model = (DefaultTableModel) PersonTable.getModel();
             
         model.setRowCount(0);
         
@@ -142,4 +202,4 @@ public class ListPersonJPanel extends javax.swing.JPanel {
      
     }
 
-
+}

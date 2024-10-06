@@ -41,7 +41,7 @@ public class MainJFrame extends javax.swing.JFrame {
         txtsearchforperson = new javax.swing.JTextField();
         btnSearchForPerson = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        UserProcessContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,18 +117,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 96, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 512, Short.MAX_VALUE)
-        );
-
-        jSplitPane1.setRightComponent(jPanel3);
+        UserProcessContainer.setLayout(new java.awt.CardLayout());
+        jSplitPane1.setRightComponent(UserProcessContainer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,76 +132,6 @@ public class MainJFrame extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
-    private void initComponents() {
-
-        SplitPane = new javax.swing.JSplitPane();
-        LeftComponent = new javax.swing.JPanel();
-        AddPerson_Button = new javax.swing.JButton();
-        ListPerson_Button = new javax.swing.JButton();
-        SearchPerson_Button = new javax.swing.JButton();
-        Search_Text = new javax.swing.JTextField();
-        RightComponent = new javax.swing.JPanel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        AddPerson_Button.setText("Add Person");
-        AddPerson_Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddPerson_ButtonActionPerformed(evt);
-            }
-        });
-
-        ListPerson_Button.setText("List Person");
-        ListPerson_Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ListPerson_ButtonActionPerformed(evt);
-            }
-        });
-        javax.swing.GroupLayout LeftComponentLayout = new javax.swing.GroupLayout(LeftComponent);
-        LeftComponent.setLayout(LeftComponentLayout);
-        LeftComponentLayout.setHorizontalGroup(
-            LeftComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LeftComponentLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(LeftComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(SearchPerson_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Search_Text)
-                    .addComponent(ListPerson_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AddPerson_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        LeftComponentLayout.setVerticalGroup(
-            LeftComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LeftComponentLayout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
-                .addComponent(AddPerson_Button)
-                .addGap(18, 18, 18)
-                .addComponent(ListPerson_Button)
-                .addGap(79, 79, 79)
-                .addComponent(Search_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SearchPerson_Button)
-                .addContainerGap(160, Short.MAX_VALUE))
-        );
-
-        SplitPane.setLeftComponent(LeftComponent);
-
-        RightComponent.setLayout(new java.awt.CardLayout());
-        SplitPane.setRightComponent(RightComponent);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPane, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-
-        pack();    
     }// </editor-fold>//GEN-END:initComponents
 
    private void AddPerson_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPerson_ButtonActionPerformed
@@ -421,12 +341,12 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel UserProcessContainer;
     private javax.swing.JButton btnAddPerson;
     private javax.swing.JButton btnListPerson;
     private javax.swing.JButton btnSearchForPerson;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblPersonProfile;
     private javax.swing.JTextField txtsearchforperson;

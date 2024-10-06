@@ -172,15 +172,11 @@ public class AddPersonJPanel extends javax.swing.JPanel {
                     .addComponent(lblHomeUnitNumber)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblHomeCity)
-                                    .addComponent(lblHomeZipCode))
-                                .addGap(49, 49, 49))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblHomeState)
-                                .addGap(74, 74, 74))
+                            .addComponent(lblHomeCity)
+                            .addComponent(lblHomeZipCode)
+                            .addComponent(lblHomeState)
                             .addComponent(lblHomeStreetName))
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtStreetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtHomeZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,9 +239,9 @@ public class AddPersonJPanel extends javax.swing.JPanel {
                     .addComponent(lblAge)
                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHomeAdd)
-                    .addComponent(lblWorkAddress))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblWorkAddress, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblHomeAdd))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -304,7 +300,7 @@ public class AddPersonJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFirstNameActionPerformed
 
-    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
         String FirstName = txtFirstName.getText();
         String LastName = txtLastName.getText();
@@ -360,8 +356,8 @@ public class AddPersonJPanel extends javax.swing.JPanel {
         txtHomeZipCode.setText("");        
         txtHomePhoneNumber.setText("");
         txtWorkPhoneNumber.setText("");
-    }//GEN-LAST:event_Create_ButtonActionPerformed
-    }//GEN-LAST:event_btnCreateActionPerformed
+    }                                             
+    }                                         
 
     private void txtHomeCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHomeCityActionPerformed
         // TODO add your handling code here:
