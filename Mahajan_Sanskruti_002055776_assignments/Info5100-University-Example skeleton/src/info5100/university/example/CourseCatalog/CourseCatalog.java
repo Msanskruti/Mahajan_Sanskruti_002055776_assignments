@@ -29,10 +29,10 @@ public class CourseCatalog {
     private void initializePredefinedCourses() {
         // Add predefined courses here
         addPredefinedCourse("info 5100", "Introduction to Information Systems", 4);
-        addPredefinedCourse("info 5200", "Database Management Systems", 4);
-        addPredefinedCourse("info 5300", "Software Engineering", 4);
-        addPredefinedCourse("info 5400", "Data Science Fundamentals", 4);
-        addPredefinedCourse("info 5500", "Information Security", 4);
+        addPredefinedCourse("info 5200", "Database Design ,", 4);
+        addPredefinedCourse("info 5300", "Cloud Computing", 4);
+        addPredefinedCourse("info 5400", "Data Science and Machine Learning", 4);
+        addPredefinedCourse("info 5500", "Cyner Security", 4);
     }
     private void addPredefinedCourse(String number, String name, int credits) {
         Course course = new Course(name, number, credits);

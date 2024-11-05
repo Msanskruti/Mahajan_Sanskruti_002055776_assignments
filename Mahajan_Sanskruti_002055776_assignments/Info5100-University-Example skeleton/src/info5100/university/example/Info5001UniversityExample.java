@@ -236,7 +236,7 @@ public class Info5001UniversityExample {
             System.out.println("1. New Student Registration");
             System.out.println("2. Existing Student Registration");
            // System.out.println("3. View Registrations by Course");
-            System.out.println("4. Exit");
+            System.out.println("3. Exit");
             System.out.print("Enter your choice: ");
 
             int registrationOption = scanner.nextInt();
